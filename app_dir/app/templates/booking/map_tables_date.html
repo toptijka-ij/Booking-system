@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col p-2 border border-light rounded bg-light">
+        <img class="w-100 h-100 rounded" src="/static/images/sxema-yas.jpg">
+    </div>
+    <div class="col">
+        <form method="post">
+            {{ form.hidden_tag() }}
+
+            {% for field in form if field.name not in ['csrf_token', 'submit'] %}
+            <div class="form-group">
+                {{ field.label }}
+                {{ field(class_='form-control')|safe }}
+                {% for error in field.errors %}
+                <span class="ml-2 badge badge-light font-weight-normal text-black-50">{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <br>
+            <div align="right">{{form.submit(class_="btn btn-warning text-dark")}}</div>
+        </form>
+    </div>
+</div>
+{% endblock %}

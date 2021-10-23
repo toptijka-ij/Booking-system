@@ -1,0 +1,18 @@
+{% extends 'booking/datetime_peoplenum_duration_form.html' %}
+
+{% block table_info %}
+
+<div class="border border-secondary p-2 pl-3 pt-3 alert alert-light" style="border-radius: 4px; ">
+    В соответствии с вашим выбором:
+    <div class="p-1 pl-3">• максимальное количество гостей составляет <strong>{{info.max_guests}}</strong></div>
+    {% if info.busy_time %}
+    <div class="p-1 pl-3 d-inline-block">• уже зарегистрированы брони:
+        {% for x in info.busy_time %}
+        <div class="p-1 d-table" style="margin-left: 60px;">{{x}}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="p-1 font-weight-bold">Пожалуйста, учтите эту информацию при бронировании столика!</div>
+</div>
+<br>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {{ form.hidden_tag() }}
+    {% for field in form if field.name not in ['csrf_token', 'submit'] %}
+    <div class="form-group">
+        {{ field.label }}
+        {{ field(class_='form-control')|safe }}
+        {% for error in field.errors %}
+        <span class="ml-2 badge badge-light font-weight-normal text-black-50">{{ error }}</span>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <br>
+    <div align="right">{{form.submit(class_="btn btn-warning text-dark")}}</div>
+</form>
+
+{% endblock %}

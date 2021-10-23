@@ -1,0 +1,19 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+<div class="border border-dark rounded p-4 text-dark">
+    <h5 class="bg-dark p-2 text-warning" style="border-radius: 4px;">Данные вашей брони</h5>
+    {% for label, value in booking_data %}
+    <div class="font-weight-bold d-inline-block p-1 pl-2">{{label}}:</div>
+    <div class="font-weight-normal d-inline-block">{{value}}</div>
+    <br>
+    {% endfor %}
+</div>
+<br>
+<form method="post">
+    <input type="hidden" name="_csrf" value="<your_csrf_token>"/>
+    <div align="right"><input type="submit" class="btn btn-warning text-dark" value="Подтвердить"></div>
+</form>
+
+{% endblock %}

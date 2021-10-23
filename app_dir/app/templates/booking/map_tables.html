@@ -1,0 +1,23 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col p-2 border border-light rounded bg-light">
+        <img class="w-100 h-100 rounded" src="/static/images/sxema-yas.jpg">
+    </div>
+    <div class="col">
+        <form method="post">
+            <input type="hidden" name="_csrf" value="<your_csrf_token>"/>
+            <div class="form-group ">
+                <label for="table">Выберите столик</label>
+                <select id="table" name="table" class="form-control custom-select">
+                    {% for free_table in free_tables %}
+                    <option value="{{free_table.id}}">{{free_table.id}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div align="right"><input type="submit" class="btn btn-warning text-dark" value="Продолжить"></div>
+        </form>
+    </div>
+</div>
+{% endblock %}
